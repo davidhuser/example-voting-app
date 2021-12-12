@@ -2,8 +2,10 @@ pipeline {
   agent none
   stages{
       stage("build"){
-        docker {
-          image 'node:8-alpine'
+        agent {
+          docker {
+            image 'node:8-alpine'
+          }
         }
         when{
             changeset "**/result/**"
@@ -16,8 +18,10 @@ pipeline {
         }
       }
       stage("test"){
-        docker {
-          image 'node:8-alpine'
+        agent {
+          docker {
+            image 'node:8-alpine'
+          }
         }
         when{
           changeset "**/result/**"
